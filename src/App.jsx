@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import InlinePicker from "./components/picker/picker";
 
-import { imageMap } from "./constants/images";
+import { imageMap, svgMap } from "./constants/images";
 
 const values = {
   environment: ["beach", "city", "forest", "mountain"],
@@ -16,10 +16,17 @@ function getRandomInt(max) {
 
 function App() {
   const [currentImage, setCurrentImage] = useState(imageMap["beach_sunny"]);
+  const [currentIcons, setCurrentIcons] = useState({
+    environment: svgMap["beach"],
+    weather: svgMap["sunny"]
+  });
   const [pickerValue, setPickerValue] = useState({
     environment: "beach",
     weather: "sunny",
   });
+
+
+  console.log({pickerValue, currentIcons})
 
   console.log({ pickerValue });
 
@@ -35,21 +42,43 @@ function App() {
   };
 
   useEffect(() => {
-    const key = `${pickerValue.environment}_${pickerValue.weather}`;
-    if (imageMap[key]) {
-      console.log("imageMap[key] -> ", imageMap[key]);
-      const listImagesSelected = imageMap[key];
+    // Actualizar el icono del entorno (environment) si cambia
+    setCurrentIcons((prevIcons) => ({
+      ...prevIcons,
+      environment: svgMap[pickerValue.environment],
+    }));
+  }, [pickerValue.environment]);
+
+  useEffect(() => {
+    // Actualizar el icono del clima (weather) si cambia
+    setCurrentIcons((prevIcons) => ({
+      ...prevIcons,
+      weather: svgMap[pickerValue.weather],
+    }));
+  }, [pickerValue.weather]);
+
+  useEffect(() => {
+    const keyImage = `${pickerValue.environment}_${pickerValue.weather}`;
+    if (imageMap[keyImage]) {
+      console.log("imageMap[key] -> ", imageMap[keyImage]);
+      const listImagesSelected = imageMap[keyImage];
       const index = getRandomInt(listImagesSelected.length);
       console.log({ index });
 
-      setCurrentImage(imageMap[key][index]);
+      setCurrentImage(imageMap[keyImage][index]);
     }
   }, [pickerValue]);
 
   return (
     <section className="p-6 sm:p-10 md:p-12 flex w-full flex-col bg-black text-white min-h-screen">
-      <header className="mb-8 w-full text-center text-3xl font-bold leading-[36px] text-white hover:text-gray-300 transition duration-300">
-  Weather Wheel
+      <header className="mb-8 w-full text-center text-3xl font-bold leading-[36px] text-white hover:text-gray-300 transition duration-300 flex items-center justify-center gap-x-6">
+        <h1>
+        Weather Wheel
+        </h1>
+        <div className="flex items-center gap-x-2">
+          <img src={currentIcons.environment} className="w-12 h-12 animate-fade-down"/>
+          <img src={currentIcons.weather} className="w-12 h-12 animate-fade-left"/>
+        </div>
 </header>
 
       <main className="flex w-full items-center justify-center gap-8 md:gap-20 [flex-flow:column]  md:[flex-flow:initial]">

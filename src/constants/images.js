@@ -1,3 +1,12 @@
+import BeachSvg from "../assets/svg/beach.svg"
+import CitySvg from "../assets/svg/city.svg"
+import ForestSvg from "../assets/svg/forest.svg"
+import MountainSvg from "../assets/svg/mountain.svg"
+import SunnnySvg from "../assets/svg/sunny.svg"
+import CloudySvg from "../assets/svg/cloudy.svg"
+import RainySvg from "../assets/svg/rainy.svg"
+import SnowySvg from "../assets/svg/snowy.svg"
+
 export const imageMap = {
   "beach_rainy": ["https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736600020/rainy-beach-mountain2_u4dxsm.jpg"],
   "beach_cloudy": [
@@ -21,4 +30,15 @@ export const imageMap = {
     "https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736600051/wooden-docks-iced-lake-people-ice-skating_wymkvj.jpg", "https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736599906/pexels-molly-champion-256223-784148_csitlx.jpg", "https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736599920/pexels-vr33s-17125299_iou0qv.jpg"],
   "mountain_snowy": ["https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736599944/pexels-diesgomo-14678594_jzbnte.jpg", "https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736599959/pexels-lucasleonelsuarez-18869171_zug2v2.jpg"],
   "mountain_sunny": ["https://res.cloudinary.com/dtnixnyfz/image/upload/w_800,f_auto,q_auto/v1736599909/pexels-matthew-montrone-230847-1374295_otfrsn.jpg"],
+}
+
+export const svgMap = {
+  "beach": BeachSvg,
+  "city": CitySvg,
+  "forest": ForestSvg,
+  "mountain": MountainSvg,
+  "sunny": SunnnySvg,
+  "cloudy": CloudySvg,
+  "rainy": RainySvg,
+  "snowy": SnowySvg
 }
