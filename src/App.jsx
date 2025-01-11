@@ -25,8 +25,8 @@ function App() {
     weather: "sunny",
   });
 
-
-  console.log({pickerValue, currentIcons})
+  const [isFadingLeft, setIsFadingLeft] = useState(false); // Animación fade para el icono de la izquierda
+  const [isFadingRight, setIsFadingRight] = useState(false);
 
   console.log({ pickerValue });
 
@@ -41,43 +41,49 @@ function App() {
     setPickerValue(value);
   };
 
-  useEffect(() => {
-    // Actualizar el icono del entorno (environment) si cambia
-    setCurrentIcons((prevIcons) => ({
-      ...prevIcons,
-      environment: svgMap[pickerValue.environment],
-    }));
-  }, [pickerValue.environment]);
+  // Actualizar icono de environment (izquierda)
+useEffect(() => {
+  setIsFadingLeft(true); // Activamos fade para el icono izquierdo
+  setCurrentIcons((prevIcons) => ({
+    ...prevIcons,
+    environment: svgMap[pickerValue.environment],
+  }));
+  const timeout = setTimeout(() => setIsFadingLeft(false), 500); // Desactivar fade después de 500ms
+  return () => clearTimeout(timeout);
+}, [pickerValue.environment]);
+
+// Actualizar icono de weather (derecha)
+useEffect(() => {
+  setIsFadingRight(true); // Activamos fade para el icono derecho
+  setCurrentIcons((prevIcons) => ({
+    ...prevIcons,
+    weather: svgMap[pickerValue.weather],
+  }));
+  const timeout = setTimeout(() => setIsFadingRight(false), 500); // Desactivar fade después de 500ms
+  return () => clearTimeout(timeout);
+}, [pickerValue.weather]);
 
   useEffect(() => {
-    // Actualizar el icono del clima (weather) si cambia
-    setCurrentIcons((prevIcons) => ({
-      ...prevIcons,
-      weather: svgMap[pickerValue.weather],
-    }));
-  }, [pickerValue.weather]);
-
-  useEffect(() => {
-    const keyImage = `${pickerValue.environment}_${pickerValue.weather}`;
-    if (imageMap[keyImage]) {
-      console.log("imageMap[key] -> ", imageMap[keyImage]);
-      const listImagesSelected = imageMap[keyImage];
+    const key = `${pickerValue.environment}_${pickerValue.weather}`;
+    if (imageMap[key]) {
+      console.log("imageMap[key] -> ", imageMap[key]);
+      const listImagesSelected = imageMap[key];
       const index = getRandomInt(listImagesSelected.length);
       console.log({ index });
 
-      setCurrentImage(imageMap[keyImage][index]);
+      setCurrentImage(imageMap[key][index]);
     }
   }, [pickerValue]);
 
   return (
     <section className="p-6 sm:p-10 md:p-12 flex w-full flex-col bg-black text-white min-h-screen">
-      <header className="mb-8 w-full text-center text-3xl font-bold leading-[36px] text-white hover:text-gray-300 transition duration-300 flex items-center justify-center gap-x-6">
+      <header className="mb-8 w-full text-center text-3xl font-bold leading-[36px] text-white hover:text-gray-300 transition duration-300 flex items-center justify-center gap-x-4">
         <h1>
         Weather Wheel
         </h1>
         <div className="flex items-center gap-x-2">
-          <img src={currentIcons.environment} className="w-12 h-12 animate-fade-down"/>
-          <img src={currentIcons.weather} className="w-12 h-12 animate-fade-left"/>
+          <img src={currentIcons.environment} className={`w-12 h-12 ${isFadingLeft ? 'animate-fade-up': ''}`}/>
+          <img src={currentIcons.weather} className={`w-12 h-12 ${isFadingRight ? 'animate-fade-left' : '' }`}/>
         </div>
 </header>
 
