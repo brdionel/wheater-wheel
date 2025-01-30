@@ -29,7 +29,6 @@ export const imageMap = {
     "https://res.cloudinary.com/dtnixnyfz/image/upload/v1736599900/rio-de-janeiro-brazil-november-15-people-enjoying-YVUEU4CCWNH2RCEFZ6EPAJEWBE_gzmy7q.avif",
     "https://res.cloudinary.com/dtnixnyfz/image/upload/v1736940682/beach_sunny_11.4_kb9ahs.png",
     "https://res.cloudinary.com/dtnixnyfz/image/upload/v1736940669/beach_sunny_11.1_flr29i.png",
-    "https://res.cloudinary.com/dtnixnyfz/image/upload/v1736940664/beach_sunny_11.2_vx3pwa.png",
     "https://images.pexels.com/photos/15875431/pexels-photo-15875431/free-photo-of-mar-playa-oceano-torre.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/13550223/pexels-photo-13550223.jpeg?auto=compress&cs=tinysrgb&w=600",
     "https://images.pexels.com/photos/17470374/pexels-photo-17470374/free-photo-of-mar-arena-agua-oceano.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
