@@ -6,13 +6,13 @@ function renderOptions(options, selectedValue, onChange) {
 			key={option}
 			value={option}
 			className="flex h-[40px] cursor-pointer items-center justify-center text-lg font-medium leading-[22px] text-primary-dark opacity-100"
-			onClick={() => onChange(option)}
-		>
+			>
 			{({ selected }) => (
 				<div
-					className={`
-            flex min-h-[40px] cursor-pointer items-center justify-center text-lg font-medium leading-[22px] text-primary-dark
-            ${selected ? "font-semibold opacity-100" : "text-neutral-400 opacity-30"}`}
+				className={`
+					flex min-h-[40px] cursor-pointer items-center justify-center text-lg font-medium leading-[22px] text-primary-dark
+					${selected ? "font-semibold opacity-100" : "text-neutral-400 opacity-30"}`}
+					onClick={() => onChange(option)}
 				>
 					{option}
 				</div>
