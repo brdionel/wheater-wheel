@@ -4,7 +4,6 @@ import { Fragment, useEffect, useState } from "react";
 import InlinePicker from "./components/picker/picker";
 
 import { imageMap, svgMap } from "./constants/images";
-import SmokeBackground from "./components/smokeBakground/smokeBackground";
 
 const values = {
   environment: ["beach", "city", "forest", "mountain"],
@@ -75,12 +74,9 @@ function App() {
 
   return (
     <Fragment>
-
-      <SmokeBackground />
-      <section className="p-6 sm:p-10 md:p-12 flex w-full flex-col text-white min-h-screen z-10">
-        
-        
-        <header className="mb-8 w-full text-center text-3xl font-bold leading-[36px] text-white hover:text-gray-300 transition duration-300 flex items-center justify-center gap-x-4">
+      <section className="p-6 sm:p-10 md:p-12 flex w-full flex-col text-white min-h-screen z-10 relative">
+        <div className='absolute inset-0 bg-[radial-gradient(circle_at_center,#131313,_#2c2c2e,_#18181b)] z-0'></div>
+        <header className="z-10 mb-8 w-full text-center text-3xl font-bold leading-[36px] text-white hover:text-gray-300 transition duration-300 flex items-center justify-center gap-x-4">
           <h1 className="text-[25px] md:text-[30px]">
           Weather Wheel
           </h1>
@@ -90,7 +86,7 @@ function App() {
           </div>
         </header>
 
-        <main className="flex w-full items-center justify-center gap-8 md:gap-20 [flex-flow:column]  md:[flex-flow:initial]">
+        <main className="pt-16 lg:pt-24 flex w-full items-center justify-center gap-8 md:gap-20 [flex-flow:column]  md:[flex-flow:initial]">
           <div className="relative w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-2/5 h-80 overflow-hidden border-4 border-gray-700 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
             <img
               src={currentImage}
@@ -105,6 +101,12 @@ function App() {
             setPickerValue={handleLeftChange}
           />
         </main>
+
+        <footer className="z-10 mt-32 absolute bottom-4 left-0 right-0">
+          <p class="text-center text-xs leading-5 text-white">
+            © 2025 Wheater Wheel | Bruno Dionel Vicente
+          </p>
+        </footer>
       </section>
     </Fragment>
   );

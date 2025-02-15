@@ -24,7 +24,7 @@ function renderOptions(options, selectedValue, onChange) {
 function InlinePicker({ label, values, pickerValue, setPickerValue }) {
 	return (
 		<div className="mb-4 flex flex-col items-center">
-			<div className="mb-2 flex w-[365px] justify-around">
+			<div className="mb-2 flex w-[365px] justify-around z-10">
 				<h3 className="text-center text-[17px] font-medium leading-[20.72px] text-[#6BA5C4]">
 					Environment
 				</h3>
